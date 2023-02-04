@@ -9,6 +9,6 @@ if (a < 100) {
     return;
 }
 else {
-    string b = Convert.ToString(a); //не понятно как писать чисто, написал логически.
+    string b = Convert.ToString(a); //не понял как писать чисто, написал логически.
     Console.WriteLine(b[2]);
 }
