@@ -17,3 +17,11 @@ for i in a:
         count += 1 #я устал смотреть в питон
 print(count)
 
+
+# from random import randint
+# len_nums = int(input('Enter list length: '))
+# nums = [randint(1, 100) for i in range(len_nums)]
+# print('List: ', *nums)
+# x = int(input('Enter x: '))
+# print(f'{x} find in list {nums.count(x)} times')
+# print(f'{x} find in list {len([i for i in nums if i == x])} times')

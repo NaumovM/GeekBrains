@@ -32,3 +32,5 @@ letter_values = {
 word = input("Enter a word: ").upper()
 score = sum([letter_values.get(letter, 0) for letter in word]) #Что делать тем, кому питон режет глаза и не проходил ещё методы.
 print(f"The score for '{word}' is {score}.")
+
+print(f'Total cost is {sum(letter_values[letter] for letter in word)}')
