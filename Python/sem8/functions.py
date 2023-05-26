@@ -1,48 +1,55 @@
 def show_data() -> None:
     """Выводит информацию из справочника"""
     with open('book.txt', 'r', encoding='utf-8') as file:
-        print(file.read())
+        print(file.readlines())                             #add lines, еще бы понять как выводить в консоль без \n
 
 
-def add_data() -> None:
+def add_data() -> None:                                     #вроде без ошибок работает. Единственное после удаления, добавляет не в последнюю пустую строку
     """Добавляет информацию в справочник."""
     fio = input('Введиет ФИО: ')
     phone = input('Введите телефон: ')
     with open('book.txt', 'a', encoding='utf-8') as file:
-        file.write(f'\n{fio} | {phone}')
+        file.write(f'\n{fio} | {phone}') 
 
 
-def find_data() -> None:
+def find_data() -> None:                                    #вроде норм
     """Печатает результат поиска по справочнику."""
     with open('book.txt', 'r', encoding='utf=8') as file:
-        data = file.read()
-    # print(data)
+        data = file.readlines()                              #add lines
     data_to_find = input('Введите данные для поиска: ')
     print(search(data, data_to_find))
 
     
-def delete_data() -> None:                  # функция кривая и удаляет все совпадения + оставляет пробел, но я устал с ней воевать
+def delete_data() -> None:                  # оставляет пустую строку в файле
     """Удаляет запись по ФИО или номеру"""
     with open('book.txt', 'r', encoding='utf-8') as file:
-        data = file.readlines()             # не очень понятно как юзать все это питоновское разнообразие
-    data_to_find = input('Введите данные для удаления: ')
+        data = file.readlines()             # тут я начал юзать ридлайнс и перегорбачивать весь функционал
+    data_to_find = input('Введите данные для обратботки: ')
+    data_correct = ' '.join(map(str, search(data, data_to_find)))  #благодарим опенэйай за эту строчку
     found = False
     with open('book.txt', 'w', encoding='utf-8') as file:
         for line in data:
-            if data_to_find not in line:
-                file.write(line)            # не совсем понятно, что делает эта строка(переписывает весь документ?), и зачем конструкция с  found = false, механика ясна, но не смысл
+            if data_correct not in line:
+                file.write(line)            # а как без переписывания всего документа?
             else:
                 found = True
     if found:
-        print(f"Запись с данными '{data_to_find}' удалена из телефонного справочника.")
+        print(f"Запись с данными '{data_correct}' обработана.")
     else:
-        print(f"Запись с данными '{data_to_find}' не найдена в телефонном справочнике.")
+        print(f"Запись с данными '{data_correct}' не найдена в телефонном справочнике.")
+
+def change_data() -> None:                      #оставляет пустую строку в файле тоже, последующая запись идет не построчно не красиво
+    """Изменяет запись по ФИО или номеру"""
+    delete_data()
+    add_data()
+    print("Запись с данными изменена.")
 
 
 def search(book: str, info: str) -> str:
     """Находит в списке записи по определенному критерию поиска"""
-    book = book.split('\n')
-    all_contacts = list()
+    # book = book.split('\n') удалено для перехода на ридлайнс
+    # all_contacts = list()
+    all_contacts = []
     for contact in book:
         if info in contact:
             all_contacts.append(contact)
