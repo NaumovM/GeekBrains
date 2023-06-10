@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(154, 162, 162);
+}
+
+h1{
+    color: rgb(52, 46, 46);
+}
+
+a{
+    color: rgb(144, 0, 255);
+}
+img{
+    width: 300px;
+}
+
+.big_text{
+    font-size: 1.2rem;
+}
+
+a:hover{
+    color: rgb(4, 0, 255);
+}
+
+.border{
+    border: solid rgb(0, 0, 0) 2px;
+}
