@@ -1,4 +1,6 @@
-public abstract class Character {
+package Units;
+
+public abstract class Character implements InGameInterface {
     int initiation;
     int health;
     int baseAttack;
@@ -10,7 +12,4 @@ public abstract class Character {
         this.baseAttack = baseAttack;
         this.baseDefence = baseDefence;
     }
-
-
-    public abstract void attack();
 }

@@ -1,4 +1,7 @@
-public class Warlock extends Character {
+package Units;
+
+
+public class Warlock extends Character implements InGameInterface {
     int mana;
 
     public Warlock(int initiation, int health, int baseAttack, int baseDefence) {
@@ -11,7 +14,13 @@ public class Warlock extends Character {
         this.mana = mana;
     }
 
-    public void attack() {
+    @Override
+    public void action() {
         System.out.println("The warlock casts a spell!");
+    }
+
+    @Override
+    public String getInfo() {
+        return this.getClass().getSimpleName();
     }
 }

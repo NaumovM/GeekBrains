@@ -1,4 +1,6 @@
-public class Sniper extends Character {
+package Units;
+
+public class Sniper extends Character implements InGameInterface {
     int accuracy;
 
     public Sniper(int initiation, int health, int baseAttack, int baseDefence) {
@@ -11,7 +13,12 @@ public class Sniper extends Character {
         this.accuracy = accuracy;
     }
 
-    public void attack() {
+    @Override
+    public void action() {
         System.out.println("The sniper takes aim and fires!");
+    }
+    @Override
+    public String getInfo() {
+        return this.getClass().getSimpleName();
     }
 }

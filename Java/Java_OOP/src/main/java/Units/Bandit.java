@@ -1,4 +1,6 @@
-public class Bandit extends Character {
+package Units;
+
+public class Bandit extends Character implements InGameInterface {
     int agility;
 
     public Bandit(int initiation, int health, int baseAttack, int baseDefence) {
@@ -11,8 +13,12 @@ public class Bandit extends Character {
         this.agility = agility;
     }
 
-
-    public void attack() {
+    @Override
+    public void action() {
         System.out.println("The bandit throws a dagger!");
+    }
+    @Override
+    public String getInfo() {
+        return this.getClass().getSimpleName();
     }
 }

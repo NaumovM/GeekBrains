@@ -1,4 +1,6 @@
-public class Crossbowman extends Character {
+package Units;
+
+public class Crossbowman extends Character implements InGameInterface {
     int dexterity;
 
     public Crossbowman(int initiation, int health, int baseAttack, int baseDefence) {
@@ -11,8 +13,12 @@ public class Crossbowman extends Character {
         this.dexterity = dexterity;
     }
 
-
-    public void attack() {
+    @Override
+    public void action() {
         System.out.println("The crossbowman fires an arrow!");
+    }
+    @Override
+    public String getInfo() {
+        return this.getClass().getSimpleName();
     }
 }
