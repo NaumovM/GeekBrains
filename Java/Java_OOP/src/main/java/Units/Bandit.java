@@ -1,15 +1,12 @@
 package Units;
 
+
 public class Bandit extends Character implements InGameInterface {
     int agility;
 
-    public Bandit(int initiation, int health, int baseAttack, int baseDefence) {
-        super(initiation, health, baseAttack, baseDefence);
-        this.agility = 0;
-    }
 
-    public Bandit(int initiation, int health, int baseAttack, int baseDefence, int agility) {
-        super(initiation, health, baseAttack, baseDefence);
+    public Bandit(int initiation, int health, int baseAttack, int baseDefence, int agility, int x, int y) {
+        super(initiation, health, baseAttack, baseDefence, x, y);
         this.agility = agility;
     }
 
@@ -19,6 +16,6 @@ public class Bandit extends Character implements InGameInterface {
     }
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName()+" ("+ coords.x + ", " + coords.y + ")";
     }
 }

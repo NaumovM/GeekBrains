@@ -3,13 +3,8 @@ package Units;
 public class Sniper extends Character implements InGameInterface {
     int accuracy;
 
-    public Sniper(int initiation, int health, int baseAttack, int baseDefence) {
-        super(initiation, health, baseAttack, baseDefence);
-        this.accuracy = 0;
-    }
-
-    public Sniper(int initiation, int health, int baseAttack, int baseDefence, int accuracy) {
-        super(initiation, health, baseAttack, baseDefence);
+    public Sniper(int initiation, int health, int baseAttack, int baseDefence, int accuracy, int x, int y) {
+        super(initiation, health, baseAttack, baseDefence, x, y);
         this.accuracy = accuracy;
     }
 
@@ -17,8 +12,9 @@ public class Sniper extends Character implements InGameInterface {
     public void action() {
         System.out.println("The sniper takes aim and fires!");
     }
+
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
     }
 }

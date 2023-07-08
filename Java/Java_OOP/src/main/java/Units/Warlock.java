@@ -4,13 +4,8 @@ package Units;
 public class Warlock extends Character implements InGameInterface {
     int mana;
 
-    public Warlock(int initiation, int health, int baseAttack, int baseDefence) {
-        super(initiation, health, baseAttack, baseDefence);
-        this.mana = 0;
-    }
-
-    public Warlock(int initiation, int health, int baseAttack, int baseDefence, int mana) {
-        super(initiation, health, baseAttack, baseDefence);
+    public Warlock(int initiation, int health, int baseAttack, int baseDefence, int mana, int x, int y) {
+        super(initiation, health, baseAttack, baseDefence, x, y);
         this.mana = mana;
     }
 
@@ -21,6 +16,6 @@ public class Warlock extends Character implements InGameInterface {
 
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
     }
 }

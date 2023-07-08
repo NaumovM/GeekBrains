@@ -3,13 +3,8 @@ package Units;
 public class Peasant extends Character implements InGameInterface {
     int strength;
 
-    public Peasant(int initiation, int health, int baseAttack, int baseDefence) {
-        super(initiation, health, baseAttack, baseDefence);
-        this.strength = 0;
-    }
-
-    public Peasant(int initiation, int health, int baseAttack, int baseDefence, int strength) {
-        super(initiation, health, baseAttack, baseDefence);
+    public Peasant(int initiation, int health, int baseAttack, int baseDefence, int strength, int x, int y) {
+        super(initiation, health, baseAttack, baseDefence, x, y);
         this.strength = strength;
     }
 
@@ -17,8 +12,9 @@ public class Peasant extends Character implements InGameInterface {
     public void action() {
         System.out.println("The peasant swings his pitchfork!");
     }
+
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
     }
 }
