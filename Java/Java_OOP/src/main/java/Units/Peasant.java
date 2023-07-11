@@ -11,6 +11,5 @@ public class Peasant extends Character implements InGameInterface {
     }
 
     @Override
-    public void action(ArrayList<Character> team) {}
-
+    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly)  {}
 }

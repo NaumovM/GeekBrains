@@ -10,9 +10,8 @@ public class Legionary extends Character implements InGameInterface {
         this.endurance = endurance;
     }
 
-
     @Override
-    public void action(ArrayList<Character> team) {
+    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
 
     }
 }

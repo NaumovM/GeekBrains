@@ -1,6 +1,5 @@
 package Units;
 
-
 import java.util.ArrayList;
 
 public class Warlock extends Character implements InGameInterface {
@@ -12,7 +11,6 @@ public class Warlock extends Character implements InGameInterface {
     }
 
     @Override
-    public void action(ArrayList<Character> team) {
-
+    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
     }
 }

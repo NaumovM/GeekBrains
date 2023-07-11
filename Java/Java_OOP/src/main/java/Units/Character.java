@@ -1,10 +1,9 @@
 package Units;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Character implements InGameInterface {
-    int initiation;
+    public int initiation;
     int health;
     int baseAttack;
     int baseDefence;
@@ -59,7 +58,6 @@ public abstract class Character implements InGameInterface {
         int y1 = coords1.getY();
         int x2 = coords2.getX();
         int y2 = coords2.getY();
-
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
@@ -67,7 +65,5 @@ public abstract class Character implements InGameInterface {
         return String.format("%s: health=%d, (%d, %d)", this.getClass().getSimpleName(),
                 this.health, this.coords.x, this.coords.y);
     }
-
-
 }
 

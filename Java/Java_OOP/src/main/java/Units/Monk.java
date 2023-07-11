@@ -10,10 +10,7 @@ public class Monk extends Character implements InGameInterface {
         this.wisdom = wisdom;
     }
 
-
     @Override
-    public void action(ArrayList<Character> team) {
-
+    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
     }
-
 }

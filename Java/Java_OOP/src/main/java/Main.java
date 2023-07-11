@@ -2,42 +2,38 @@ import Units.*;
 import Units.Character;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-import static Units.Character.calculateDistance;
-import static Units.Character.searchNearestEnemy;
-
 public class Main {
-    //добавлен класс Coords  с геттерами + в абстрактный класс.
-    //у персонажей оставлен 1 конструктор и отредактирован getInfo под координаты
-    //в мейн добавлен поиск дистанции и вывод ближайшего врага. Не знаю как убрать его из мейна и надо ли.
-    //в целом задание сложное, юзал чатгпт для помощи.
     public static void main(String[] args) {
-//        Character peasant = new Peasant(1, 100, 5, 5, 3, 0, 0);
-//        Character bandit = new Bandit(2, 80, 20, 10, 3, 0, 0);
-//        Character sniper = new Sniper(3, 50, 35, 5, 6, 0, 0);
-//        Character warlock = new Warlock(2, 150, 23, 10, 10, 0, 0);
-//        Character legionary = new Legionary(3, 250, 15, 25, 10, 0, 0);
-//        Character crossbowman = new Crossbowman(3, 65, 37, 7, 7, 0, 0);
-//        Character monk = new Monk(4, 120, 30, 18, 25, 0, 0);
 
         ArrayList<Character> characters1 = new ArrayList<>();
         ArrayList<Character> characters2 = new ArrayList<>();
+        ArrayList<Character> allCharacters = new ArrayList<>();
 
         fillList(characters1, 0);
         fillList(characters2, 9);
 
-        characters1.forEach(n -> n.action(characters2));
-        System.out.println("------");
-        characters2.forEach(n -> n.action(characters1));
-        System.out.println("------");
-        characters1.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println("------");
-        characters2.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println("------");
+        allCharacters.addAll(characters1);
+        allCharacters.addAll(characters2);
+        allCharacters.sort(Comparator.comparingInt((Character c) -> c.initiation));
 
+        for (Character chars : allCharacters) {
+            if (characters1.contains(chars)) {
+                chars.action(characters2, characters1);
+            } else {
+                chars.action(characters1, characters2);
+            }
+        }
+
+        characters1.forEach(n -> System.out.println(n.getInfo()));
+        System.out.println("------------------");
+        characters2.forEach(n -> System.out.println(n.getInfo()));
+        System.out.println("------------------");
     }
+
 
     public static void fillList(List<Character> list, int side) {
         Random random = new Random();
@@ -65,6 +61,7 @@ public class Main {
                 case 6:
                     list.add(new Monk(4, 120, 30, 18, 20, side, i));
                     break;
+
             }
         }
     }
