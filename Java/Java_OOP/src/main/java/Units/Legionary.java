@@ -1,5 +1,7 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Legionary extends Character implements InGameInterface {
     int endurance;
 
@@ -10,12 +12,7 @@ public class Legionary extends Character implements InGameInterface {
 
 
     @Override
-    public void action() {
-        System.out.println("The legionary charges with his sword!");
-    }
+    public void action(ArrayList<Character> team) {
 
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
     }
 }

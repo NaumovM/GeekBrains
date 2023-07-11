@@ -1,5 +1,7 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Monk extends Character implements InGameInterface {
     int wisdom;
 
@@ -10,12 +12,8 @@ public class Monk extends Character implements InGameInterface {
 
 
     @Override
-    public void action() {
-        System.out.println("The monk performs a martial arts move!");
+    public void action(ArrayList<Character> team) {
+
     }
 
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
-    }
 }

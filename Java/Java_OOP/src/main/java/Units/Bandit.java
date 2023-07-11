@@ -1,6 +1,8 @@
 package Units;
 
 
+import java.util.ArrayList;
+
 public class Bandit extends Character implements InGameInterface {
     int agility;
 
@@ -11,11 +13,7 @@ public class Bandit extends Character implements InGameInterface {
     }
 
     @Override
-    public void action() {
-        System.out.println("The bandit throws a dagger!");
-    }
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName()+" ("+ coords.x + ", " + coords.y + ")";
+    public void action(ArrayList<Character> team) {
+
     }
 }

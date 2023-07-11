@@ -1,5 +1,7 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Peasant extends Character implements InGameInterface {
     int strength;
 
@@ -9,12 +11,6 @@ public class Peasant extends Character implements InGameInterface {
     }
 
     @Override
-    public void action() {
-        System.out.println("The peasant swings his pitchfork!");
-    }
+    public void action(ArrayList<Character> team) {}
 
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
-    }
 }

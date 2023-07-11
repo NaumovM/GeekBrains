@@ -1,6 +1,8 @@
 package Units;
 
 
+import java.util.ArrayList;
+
 public class Warlock extends Character implements InGameInterface {
     int mana;
 
@@ -10,12 +12,7 @@ public class Warlock extends Character implements InGameInterface {
     }
 
     @Override
-    public void action() {
-        System.out.println("The warlock casts a spell!");
-    }
+    public void action(ArrayList<Character> team) {
 
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
     }
 }

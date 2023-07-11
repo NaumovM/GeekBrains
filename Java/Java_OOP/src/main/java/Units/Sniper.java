@@ -1,5 +1,7 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Sniper extends Character implements InGameInterface {
     int accuracy;
 
@@ -9,12 +11,6 @@ public class Sniper extends Character implements InGameInterface {
     }
 
     @Override
-    public void action() {
-        System.out.println("The sniper takes aim and fires!");
-    }
-
-    @Override
-    public String getInfo() {
-        return this.getClass().getSimpleName() + " (" + coords.x + ", " + coords.y + ")";
+    public void action(ArrayList<Character> team) {
     }
 }
