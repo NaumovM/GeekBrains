@@ -4,21 +4,29 @@ import java.util.List;
 
 public abstract class Character implements InGameInterface {
     public int initiation;
+    int totalHealth;
     int health;
     int baseAttack;
     int baseDefence;
+    String state;
     Coords coords;
 
-    public Character(int initiation, int health, int baseAttack, int baseDefence, int x, int y) {
+    public Character(int initiation, int totalHealth, int health, int baseAttack, int baseDefence, int x, int y) {
         this.initiation = initiation;
+        this.totalHealth = totalHealth;
         this.health = health;
         this.baseAttack = baseAttack;
         this.baseDefence = baseDefence;
+        this.state = "Stand";
         this.coords = new Coords(x, y);
     }
 
     public Coords getCoords() {
         return coords;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public Character findNearest(List<Character> enemies) {
@@ -34,24 +42,6 @@ public abstract class Character implements InGameInterface {
         return nearestEnemy;
     }
 
-    public static void searchNearestEnemy(List<Character> characters1, List<Character> characters2) {
-        for (Character char1 : characters1) {
-            double minDistance = Double.MAX_VALUE;
-            Character nearestEnemy = null;
-
-            for (Character char2 : characters2) {
-                double distance = calculateDistance(char1.getCoords(), char2.getCoords());
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    nearestEnemy = char2;
-                }
-            }
-            System.out.println("For " + char1.getClass().getSimpleName() + " (" + char1.getCoords().getX() + ", " + char1.getCoords().getY() + ")");
-            System.out.println("Nearest enemy: " + nearestEnemy.getClass().getSimpleName());
-            System.out.println("Distance: " + minDistance);
-            System.out.println("------");
-        }
-    }
 
     public static double calculateDistance(Coords coords1, Coords coords2) {
         int x1 = coords1.getX();
@@ -61,9 +51,29 @@ public abstract class Character implements InGameInterface {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
+//    public String getInfo() {
+//        return String.format("%s: health=%d, (%d, %d)", this.getClass().getSimpleName(),
+//                this.health, this.coords.x, this.coords.y);
+//    }
+
     public String getInfo() {
-        return String.format("%s: health=%d, (%d, %d)", this.getClass().getSimpleName(),
-                this.health, this.coords.x, this.coords.y);
+        return String.format("%s: \u2661:%d \u2694:%d Ar:%d In:%d", this.getClass().getSimpleName(),
+                this.health, this.baseAttack, this.baseDefence, this. initiation);
+    }
+
+    @Override
+    public String toString() {return this.getClass().getSimpleName();}
+
+    protected void getDamage(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            state = "die";
+            health = 0;
+        }
+
+        if (health > totalHealth) {
+            health = totalHealth;
+        }
     }
 }
 
