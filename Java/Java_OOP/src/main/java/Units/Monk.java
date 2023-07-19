@@ -24,7 +24,8 @@ public class Monk extends Character implements InGameInterface {
         Character mostInjuredCharacter = teamAlly.get(0);
 
         for (Character ally : teamAlly) {
-            if ((ally.totalHealth - ally.health) > (mostInjuredCharacter.totalHealth - mostInjuredCharacter.health)) {
+            if (!ally.state.equals(State.DEAD) && ally.health < ally.totalHealth &&
+                    (ally.totalHealth - ally.health) > (mostInjuredCharacter.totalHealth - mostInjuredCharacter.health)) {
                 mostInjuredCharacter = ally;
             }
         }

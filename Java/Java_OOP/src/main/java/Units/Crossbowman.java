@@ -18,17 +18,17 @@ public class Crossbowman extends Character implements InGameInterface {
         Character nearestEnemy = findNearest(teamEnemy);
         nearestEnemy.getDamage(baseAttack);
         for (Character chars : teamAlly) {
-            if (chars.getClass() == Peasant.class && chars.state == ("Stand")) {
-                chars.state = "busy";
+            if (chars.getClass() == Peasant.class && chars.getState() == State.STAND) {
+                chars.setState(State.BUSY);
                 return;
             }
         }
         this.arrows -= 1;
     }
 
-    @Override //проверка расхода стрел
+    @Override
     public String getInfo() {
-        return String.format("%s: \u2661:%d, \u2694:%d Ar:%d In:%d", this.getClass().getSimpleName(),
-                this.health, this.baseAttack, this.arrows, this.initiation);
+        return String.format("%s: \u2661:%d, \u2694:%d Ar:%d In:%d %s", this.getClass().getSimpleName(),
+                this.health, this.baseAttack, this.arrows, this.initiation, this.state);
     }
 }

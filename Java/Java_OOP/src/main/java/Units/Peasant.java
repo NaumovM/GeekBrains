@@ -11,5 +11,8 @@ public class Peasant extends Character implements InGameInterface {
     }
 
     @Override
-    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly)  {}
+    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
+        if (this.health == 0) return;
+        this.setState(State.STAND);
+    }
 }

@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        fillList(characters1, 0);
+        fillList(characters1, 1);
         fillList(characters2, 10);
 
         allCharacters.addAll(characters1);
@@ -29,8 +29,6 @@ public class Main {
                     chars.action(characters1, characters2);
                 }
             }
-
-
 
         }
     }
@@ -54,7 +52,7 @@ public class Main {
                     list.add(new Warlock(2, 150, 150, 23, 10, 10, side, i));
                     break;
                 case 4:
-                    list.add(new Legionary(3, 250, 250, 15, 25, 10, side, i));
+                    list.add(new Legionary(3, 250, 250, 43, 25, 10, side, i));
                     break;
                 case 5:
                     list.add(new Crossbowman(3, 65, 65, 37, 7, 7, side, i));

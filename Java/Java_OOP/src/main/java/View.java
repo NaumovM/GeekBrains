@@ -26,7 +26,7 @@ public class View {
     private static String getChar(int x, int y){
         String out = "| ";
         for (Character character: Main.allCharacters) {
-            if (character.getCoords().getX() == x && character.getCoords().getY() == y){     //возмонжо ошибка
+            if (character.getCoords().getX() == x && character.getCoords().getY() == y){
                 if (character.getHealth() == 0) {
                     out = "|" + (AnsiColors.ANSI_RED + character.toString().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
@@ -54,7 +54,7 @@ public class View {
         System.out.print(" ".repeat(l[0]-9));
         System.out.println(AnsiColors.ANSI_BLUE+"Blue side"+AnsiColors.ANSI_RESET);
         for (int i = 1; i < 11; i++) {
-            System.out.print(getChar(0, i));
+            System.out.print(getChar(1, i));
         }
         System.out.print("|    ");
         System.out.print(Main.characters1.get(0).getInfo());
