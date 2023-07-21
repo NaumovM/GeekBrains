@@ -42,7 +42,7 @@ public abstract class Character implements InGameInterface {
         Character nearestEnemy = null;
         double minDistance = Integer.MAX_VALUE;
         for (Character enemy : enemies) {
-            if (enemy.getState() == State.STAND || enemy.getState() == State.BUSY) {
+            if (!enemy.state.equals(State.DEAD)) {
                 double distance = coords.calculateDistance(enemy.getCoords());
                 if (distance < minDistance) {
                     minDistance = distance;
@@ -50,13 +50,16 @@ public abstract class Character implements InGameInterface {
                 }
             }
         }
+
         return nearestEnemy;
     }
-
-
     public String getInfo() {
         return String.format("%s: \u2661:%d \u2694:%d Ar:%d In:%d %s", this.getClass().getSimpleName(),
                 this.health, this.baseAttack, this.baseDefence, this.initiation, this.state);
+    }
+
+    public boolean isDead() {
+        return state.equals(State.DEAD);
     }
 
     @Override
@@ -67,7 +70,7 @@ public abstract class Character implements InGameInterface {
     protected void getDamage(int damage) {
         health -= damage;
         if (health <= 0) {
-            setState(State.DEAD);                   //SETSTAT
+            setState(State.DEAD);
             health = 0;
         }
 

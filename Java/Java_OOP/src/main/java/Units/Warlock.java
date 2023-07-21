@@ -12,5 +12,17 @@ public class Warlock extends Character implements InGameInterface {
 
     @Override
     public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
+        if (this.health == 0) {
+            return;
+        }
+
+        for (Character chars : teamEnemy) {
+            if (chars.getClass() == Sniper.class && chars.getState() == State.STAND ||
+                    chars.getClass() == Crossbowman.class && chars.getState() == State.STAND) {
+                chars.getDamage(baseAttack);
+                return;
+            }
+        }
+
     }
 }

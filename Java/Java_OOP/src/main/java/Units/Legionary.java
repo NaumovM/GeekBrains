@@ -21,6 +21,9 @@ public class Legionary extends Character implements InGameInterface {
             nearestEnemy.getDamage(this.baseAttack);
             return;
         }
+        if (nearestEnemy == null){
+            return;
+        }
         coords.stepEnemy(nearestEnemy);
     }
 

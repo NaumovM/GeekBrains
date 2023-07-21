@@ -12,15 +12,10 @@ public class Monk extends Character implements InGameInterface {
     }
 
     @Override
-//    public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
-//        teamAlly.sort(new Comparator<Character>() {
-//            @Override
-//            public int compare(Character o1, Character o2) {
-//                return (int) ((o1.totalHealth - o1.health) - (o2.totalHealth - o2.health));
-//            }
-//        });
-//        teamAlly.get(0).getDamage(this.baseAttack);
+
     public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
+        if (this.isDead()) return;
+
         Character mostInjuredCharacter = teamAlly.get(0);
 
         for (Character ally : teamAlly) {
@@ -29,7 +24,9 @@ public class Monk extends Character implements InGameInterface {
                 mostInjuredCharacter = ally;
             }
         }
-
+        if (mostInjuredCharacter.health == mostInjuredCharacter.totalHealth) {
+            return;
+        }
         mostInjuredCharacter.getDamage(-(this.baseAttack));
     }
 }

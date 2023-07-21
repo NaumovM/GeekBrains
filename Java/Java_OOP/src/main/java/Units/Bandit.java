@@ -12,5 +12,17 @@ public class Bandit extends Character implements InGameInterface {
 
     @Override
     public void action(ArrayList<Character> teamEnemy, ArrayList<Character> teamAlly) {
+        if (this.health == 0) {
+            return;
+        }
+        Character nearestEnemy = findNearest(teamEnemy);
+        if (coords.isAdjacent(nearestEnemy.getCoords())) {
+            nearestEnemy.getDamage(this.baseAttack);
+            return;
+        }
+        if (nearestEnemy == null){
+            return;
+        }
+        coords.stepEnemy(nearestEnemy);
     }
 }

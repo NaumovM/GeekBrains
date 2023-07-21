@@ -1,5 +1,6 @@
 package Units;
 
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 
 public class Coords {
@@ -15,7 +16,6 @@ public class Coords {
         return x;
     }
 
-
     public int getY() {
         return y;
     }
@@ -27,25 +27,24 @@ public class Coords {
     public void stepEnemy(Character nearestEnemy) {
         int targetX = nearestEnemy.coords.getX();
         int targetY = nearestEnemy.coords.getY();
-        if (targetX > this.getX()) {
-            this.x++;
-        } else if (targetX < this.getX()) {
-            this.x--;
-        }
-
-        if (targetY > this.getY()) {
-            this.y++;
-        } else if (targetY < this.getY()) {
-            this.y--;
-        }
-    }
-    private boolean isOccupied(Coords coords, ArrayList<Character> teamAlly) {
-        for(Character ally : teamAlly) {
-            if(ally.getCoords().equals(coords)) {
-                return true;
+        if (Math.abs(this.x - targetX) > Math.abs(this.y - targetY)) {
+            if (targetX > this.getX()) {
+                this.x++;
+            } else {
+                this.x--;
+            }
+        } else {
+            if (targetY > this.getY()) {
+                this.y++;
+            } else if (targetY < this.getY()) {
+                this.y--;
             }
         }
-        return false;
+    }
+
+
+    public boolean isEqual(Coords coordinates) {
+        return this.y == coordinates.y && this.x == coordinates.x;
     }
 
 
@@ -58,18 +57,6 @@ public class Coords {
 
         return (dx == 1 && dy == 0) || (dx == 0 && dy == 1);
     }
-
-//    public int[] step2(Coords enemy) {
-//        int[] coord2 = {x, y};
-//        if (enemy.y == this.y) {
-//            if (enemy.x > this.x) coord2[0] += 1;
-//            else coord2[0] -= 1;
-//        } else {
-//            if (enemy.y > this.y) coord2[0] += 1;
-//            else coord2[1] -= 1;
-//        }
-//        return coord2;
-//    }
 
 
 }
