@@ -3,7 +3,7 @@ package Sems;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class main {
+public class task1 {
     public static void main(String[] args) {
         float number = getFloatInput();
         System.out.println("Введенное число: " + number);
@@ -24,7 +24,6 @@ public class main {
                 scanner.nextLine();
             }
         }
-
         return number;
     }
 }
