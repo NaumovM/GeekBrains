@@ -6,10 +6,10 @@ import Stuff.Point3D;
 public class Camera {
     public Point3D location;
     public Angle3D angle;
-    public void Rotate(Angle3D){ //че красный то?
+    public void rotate(Angle3D angleAction){
         return;
     }
-    public void Move(Point3D){
+    public void move(Point3D pointAction){
         return;
     }
 }
